@@ -64,6 +64,7 @@ type APS struct {
 	URLArgs          []string
 	Category         string // requires iOS 8+
 	AccountId        string // for email push notifications
+	MutableContent   int    // for image show
 }
 
 func (aps APS) MarshalJSON() ([]byte, error) {
@@ -95,6 +96,7 @@ func (aps APS) MarshalJSON() ([]byte, error) {
 		data["account-id"] = aps.AccountId
 	}
 
+	data["mutable-content"] = aps.MutableContent
 	return json.Marshal(data)
 }
 
